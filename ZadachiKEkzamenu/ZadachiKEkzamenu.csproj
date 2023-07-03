@@ -8,11 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="MethodJohnsonaInput.txt" />
     <None Remove="MinElemInput.txt" />
     <None Remove="NorthWestAngleInput.txt" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="MethodJohnsonaInput.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="MinElemInput.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
