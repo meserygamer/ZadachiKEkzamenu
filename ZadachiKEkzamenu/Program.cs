@@ -1,4 +1,5 @@
-﻿using ZadachiKEkzamenu.Северо_западныйУгол;
+﻿using ZadachiKEkzamenu.Минимальный_элемент;
+using ZadachiKEkzamenu.Северо_западныйУгол;
 
 namespace ZadachiKEkzamenu
 {
@@ -7,6 +8,7 @@ namespace ZadachiKEkzamenu
         static void Main(string[] args)
         {
             new NorthWestAngleReaderFromFile("NorthWestAngleInput.txt").CreateNorthWestAngle().FindSolution();
+            new MinElemFromFile("MinElemInput.txt").CreateMinElemFromFile().FindSolution();
         }
     }
 }
