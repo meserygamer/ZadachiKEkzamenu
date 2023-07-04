@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace ZadachiKEkzamenu.Минимальный_элемент
         public MinElemFromFile(string filePath)
         {
             _filePath = filePath;
-            DataFromFile = File.ReadAllLines(@filePath).ToList();
+            DataFromFile = File.ReadAllLines(@filePath).ToList();         
         }
 
         public int[] SuppliarsPowerFromFile() => DataFromFile[0].Split(" ").ToList().ConvertAll(x => Convert.ToInt32(x)).ToArray();
@@ -89,6 +90,7 @@ namespace ZadachiKEkzamenu.Минимальный_элемент
                 _suppliarsPower[CoordinateOfMinElem[1]] -= _transportMatrix[CoordinateOfMinElem[0], CoordinateOfMinElem[1]];
                 CoordinateOfMinElem = FindMinElem(); //Находим новый минимальный элемент
             }
+            TransportMatrixLogger();
             _targetFunction = FindTargetFunc();
             Console.WriteLine($"F = {_targetFunction}");
             return _targetFunction;
@@ -136,6 +138,23 @@ namespace ZadachiKEkzamenu.Минимальный_элемент
                 }
             }
             return targetFunc;
+        }
+
+        /// <summary>
+        /// Функция логгирования для матрицы перевозок
+        /// </summary>
+        public void TransportMatrixLogger()
+        {
+            Debug.WriteLine("Матрица транспортировки для распредления методом минимального элемента:");
+            for(int NumStroka = 0; NumStroka < _transportMatrix.GetLength(0); NumStroka++)
+            {
+                string stroka = "";
+                for(int NumStolb = 0; NumStolb < _transportMatrix.GetLength(1); NumStolb++)
+                {
+                    stroka += Convert.ToString(_transportMatrix[NumStroka, NumStolb] + " ");
+                }
+                Debug.WriteLine(stroka);
+            }
         }
     }
 }
